@@ -1,0 +1,20 @@
+---
+const { cols = 3, gap } = Astro.props;
+
+const gutter = gap ?? null;
+---
+
+<div class="grid-container" style={`--cols: ${cols}`}>
+  <slot />
+</div>
+
+<style define:vars={{ gutter }}>
+  .grid-container {
+    display: grid;
+    gap: clamp(2rem, 4vw, var(--gutter, 3.19rem));
+
+    @media (width > 800px) {
+      grid-template-columns: repeat(var(--cols), 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import "../styles/main.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <slot />
+    </main>
+    <footer></footer>
+  </body>
+</html>
+
+<style>
+  header,
+  footer {
+    height: 80px;
+    background: #000;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns:
+      [full-start] 1fr
+      [content] minmax(0, var(--content-width))
+      1fr [full-end];
+    gap: clamp(1rem, 3%, 2rem);
+
+    > * {
+      grid-column: content;
+    }
+
+    .full {
+      grid-column: full;
+    }
+  }
+</style>

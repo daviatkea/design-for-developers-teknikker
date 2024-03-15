@@ -1,0 +1,84 @@
+---
+import type { ImageMetadata } from "astro";
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpeg,jpg,png,gif}"
+);
+const { name, description, imgPath } = Astro.props;
+if (!images[imgPath])
+  throw new Error(
+    `"${imgPath}" does not exist in glob: "src/assets/**/*.{jpeg,jpg,png,gif}"`
+  );
+---
+
+<div class="card-wrapper">
+  <article class="card">
+    <Image src={images[imgPath]()} alt={name} width={880} />
+    <div class="flow">
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <ul class="social" role="list">
+        <li>
+          <a href="#0">
+            <Icon name="instagram" />
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            <Icon name="facebook" />
+          </a>
+        </li>
+        <li>
+          <a href="#0">
+            <Icon name="twitter" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </article>
+</div>
+
+<style>
+  @layer components {
+    .card-wrapper {
+      container: card-wrapper / inline-size;
+    }
+
+    .card {
+      display: grid;
+      gap: clamp(1rem, 3%, 1.56rem);
+
+      @container card-wrapper (width > 375px) {
+        --icons-justify: flex-start;
+        --img-radius: calc(infinity * 1px);
+        --img-ar: 1;
+        grid-template-columns: min(180px, 25%) 1fr;
+      }
+
+      img {
+        aspect-ratio: var(--img-ar,);
+        border-radius: var(--img-radius, 1.25rem);
+      }
+
+      p {
+        --flow-space: 0.81rem;
+      }
+    }
+
+    .social {
+      --flow-space: 1.69rem;
+      display: flex;
+      gap: 1.81rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: var(--icons-justify, center);
+    }
+
+    [data-icon] {
+      width: 1.5rem;
+      height: auto;
+    }
+  }
+</style>

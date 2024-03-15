@@ -1,0 +1,69 @@
+---
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+
+const { title, variant = "primary", href, iconName, imgPath } = Astro.props;
+---
+
+<article data-variant={variant}>
+  {iconName && <Icon name={iconName} />}
+  {imgPath && <Image src={imgPath} alt={title} />}
+  <h3>{title}</h3>
+  <p>Lorem ipsum dolor sit amet consectetur.</p>
+  {
+    href && (
+      <a {href}>
+        Read more <span class="visually-hidden">about {title}</span>
+      </a>
+    )
+  }
+</article>
+
+<style>
+  @layer components {
+    [data-icon] {
+      inline-size: 2.375rem;
+      block-size: 2.375rem;
+      color: red;
+    }
+
+    article {
+      --card-space-x: 2.4375rem;
+      --card-space-y: 2.8125rem;
+      border-radius: 1.25rem;
+      border: 1px solid #eaeaea;
+      overflow: clip;
+      padding: var(--card-space-y) var(--card-space-x);
+
+      img {
+        width: calc(100% + var(--card-space-x) * 2);
+        max-width: none;
+        margin: calc(var(--card-space-y) * -1) calc(var(--card-space-x) * -1) 0;
+      }
+
+      > * + * {
+        margin-top: var(--flow-space);
+      }
+
+      h3 {
+        --flow-space: 1.5rem;
+      }
+
+      p {
+        --flow-space: 0.625rem;
+      }
+    }
+
+    [data-variant="primary"] {
+      background: #fafafa;
+    }
+
+    [data-variant="secondary"] {
+      background: #fff;
+    }
+
+    a {
+      color: inherit;
+    }
+  }
+</style>

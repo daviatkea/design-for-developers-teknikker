@@ -1,16 +1,58 @@
 ---
+import Base from "../layouts/Base.astro";
 
+import TeamCard from "../components/TeamCard.astro";
+import Columns from "../components/Columns.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base>
+  <section>
+    <Columns cols={3}>
+      <TeamCard
+        name="Sarah Jasmine"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="globe"
+        imgPath="/src/assets/images/p-1.jpg"
+      />
+      <TeamCard
+        name="John Carter"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="cogwheel"
+        imgPath="/src/assets/images/p-2.jpg"
+      />
+      <TeamCard
+        name="Daisy Stella"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="cogwheel"
+        imgPath="/src/assets/images/p-3.jpg"
+      />
+      <TeamCard
+        name="Maya Elizabeth"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="globe"
+        imgPath="/src/assets/images/p-1.jpg"
+      />
+      <TeamCard
+        name="Ryan Jackson"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="cogwheel"
+        imgPath="/src/assets/images/p-2.jpg"
+      />
+      <TeamCard
+        name="Lilly Victoria"
+        description="Leverage agile frameworks to provide a robust synopsis for high level overviews."
+        iconName="cogwheel"
+        imgPath="/src/assets/images/p-3.jpg"
+      />
+    </Columns>
+  </section>
+</Base>
+
+<style>
+  section {
+    margin-block: 3rem;
+    --column: full;
+    display: grid;
+    grid: auto / subgrid;
+  }
+</style>

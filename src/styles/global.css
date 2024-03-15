@@ -1,0 +1,18 @@
+:root {
+    --content-width: 75rem;
+
+    --color-text: #181818;
+    --color-text-muted: #595566;
+}
+
+html {
+    line-height: 1.475;
+    color: var(--color-text-muted);
+}
+
+h3 {
+    color: var(--color-text);
+    font-size: 1.5625rem;
+    font-weight: 600;
+    line-height: 1.16;
+}

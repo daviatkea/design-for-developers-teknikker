@@ -1,0 +1,47 @@
+---
+import Base from "../layouts/Base.astro";
+import Card from "../components/Card.astro";
+import Columns from "../components/Columns.astro";
+
+import myImage from "../assets/images/p-1.jpg";
+---
+
+<Base>
+  <section class="full">
+    <Columns cols="4" gap="1rem">
+      <Card
+        title="Creative Ideas"
+        variant="primary"
+        href="#0"
+        imgPath={myImage}
+      />
+      <Card title="Best Features" variant="secondary" href="#0" />
+      <Card title="Experience" variant="primary" href="#0" />
+      <Card title="Easy Solutions" variant="secondary" href="#0" />
+    </Columns>
+    <Columns cols="3" gap="1rem">
+      <Card title="Creative Ideas" variant="primary" iconName="globe" />
+      <Card title="Best Features" variant="secondary" iconName="cogwheel" />
+      <Card title="Experience" variant="primary" iconName="globe" />
+    </Columns>
+  </section>
+</Base>
+
+<style>
+  section {
+    background: #f5f5f5;
+    padding-block: 2rem;
+
+    display: inherit;
+    grid-template-columns: inherit;
+    gap: 1rem;
+
+    > * {
+      grid-column: content;
+    }
+
+    .full {
+      grid-column: full;
+    }
+  }
+</style>
